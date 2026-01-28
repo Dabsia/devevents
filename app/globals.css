@@ -240,6 +240,10 @@
 
     .flex-col-gap-2 {
       @apply flex flex-col gap-2;
+
+      h2{
+        @apply text-white;
+      }
     }
 
     .flex-row-gap-2 {
