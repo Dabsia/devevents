@@ -1,9 +1,13 @@
-import React from "react";
+import { IEvent } from "@/database";
 import EventBtn from "../components/EventBtn";
 import EventCard from "../components/EventCard";
-import { events } from "@/lib/constants";
 
-const page = () => {
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+const page = async () => {
+  const response = await fetch(`${baseUrl}/api/events`);
+  const data = await response.json();
+
   return (
     <section>
       <h1 className="text-center">
@@ -16,11 +20,17 @@ const page = () => {
       <EventBtn />
 
       <div className="mt-20 space-y-7">
-        <h3>Featured Events</h3>
+        <h3 className="text-white">Featured Events</h3>
         <ul className="events">
-          {events.map((event) => (
-            <EventCard key={event.title} {...event} />
-          ))}
+          {data && data?.events?.length > 0 ? (
+            data?.events?.map((event: IEvent) => (
+              <li key={event.title} className="list-none">
+                <EventCard {...event} />
+              </li>
+            ))
+          ) : (
+            <li>No events found</li>
+          )}
         </ul>
       </div>
     </section>

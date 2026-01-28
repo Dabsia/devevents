@@ -24,7 +24,7 @@ const Navbar = () => {
           <p>DevEvents</p>
         </Link>
         <ul>
-          <Link href="/events" onClick={() => handleNavClick("Home", "/events")}>
+          <Link href="/" onClick={() => handleNavClick("Home", "/")}>
             Home
           </Link>
           <Link
