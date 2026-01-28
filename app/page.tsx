@@ -1,6 +1,6 @@
 import React from "react";
-import EventBtn from "./components/EventBtn";
-import EventCard from "./components/EventCard";
+import EventBtn from "../components/EventBtn";
+import EventCard from "../components/EventCard";
 import { events } from "@/lib/constants";
 
 const page = () => {
